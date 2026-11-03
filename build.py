@@ -99,6 +99,6 @@ page('Page not found','The requested page could not be found.',intro('404','Letâ
 (OUT/'404.html').write_text((OUT/'404/index.html').read_text())
 urls=[ORIGIN+'/' if p==OUT/'index.html' else ORIGIN+'/'+str(p.parent.relative_to(OUT)).strip('/')+'/' for p in OUT.rglob('index.html') if '404' not in p.parts]
 (OUT/'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+''.join(f'<url><loc>{u}</loc></url>' for u in sorted(urls))+'</urlset>')
-(OUT/'robots.txt').write_text('User-agent: *\nAllow: /\nSitemap: '+ORIGIN+'/sitemap.xml\n')
-(ROOT/'vercel.json').write_text(json.dumps({'cleanUrls':True,'trailingSlash':True,'outputDirectory':'dist','buildCommand':'python3 build.py','headers':[{'source':'/(.*)','headers':[{'key':'X-Content-Type-Options','value':'nosniff'},{'key':'Referrer-Policy','value':'strict-origin-when-cross-origin'}]}]},indent=2)+'\n')
+(OUT/'robots.txt').write_text('User-agent: *\nAllow: /\nDisallow: /invitation/\nDisallow: /api/\nSitemap: '+ORIGIN+'/sitemap.xml\n')
+
 print('Built',len(list(OUT.rglob('*.html'))),'HTML files')

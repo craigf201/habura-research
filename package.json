@@ -1,0 +1,18 @@
+{
+  "name": "habura-research",
+  "version": "1.0.0",
+  "description": "Habura Research website and private conference invitations",
+  "scripts": {
+    "build": "python3 build.py",
+    "test": "node --test test/*.test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/craigf201/habura-research.git"
+  },
+  "type": "module",
+  "dependencies": {
+    "@vercel/blob": "2.8.2"
+  },
+  "private": true
+}
